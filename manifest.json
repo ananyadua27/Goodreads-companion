@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Goodreads Companion",
+  "version": "1.0",
+  "description": "Enhance your Goodreads experience with local library availability, sentiment analysis, and top keyword themes. Quickly discover your next read, check nearby library availability, and support your community!",
+  "author": "Ananya Dua",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon128.png",
+      "32": "icons/icon128.png",
+      "48": "icons/icon128.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon128.png",
+    "32": "icons/icon128.png",
+    "48": "icons/icon128.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.goodreads.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.goodreads.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

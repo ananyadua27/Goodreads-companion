@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goodreads Companion</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="libs/plotly-2.31.1.min.js"></script>
+</head>
+<body>
+  <h2>Goodreads Companion</h2>
+
+  <div id="book-info">
+    <p><strong>Title:</strong> <span id="book-title">Detecting book...</span></p>
+    <p><strong>Author:</strong> <span id="book-author"></span></p>
+  </div>
+
+  <div id="location-input">
+    <label for="zip">Enter your ZIP/Postal Code:</label><br />
+    <input id="zip" type="text" placeholder="e.g. 94140" />
+    <button id="save-location">Save Location</button>
+  </div>
+
+  <div id="availability-section">
+    <button id="check-availability">Check Availability</button>
+    <p id="availability-status">Please save your location and click "Check Availability."</p>
+  </div>
+
+  <div id="worldcat-section" style="margin-top: 1em; display: flex; font-weight: bold; align-items: center; justify-content: center;">
+    <button id="worldcat-button" type="button">Search this book on WorldCat</button>
+  </div>
+
+  <div id="sentiment-summary" style="margin-top: 1.5em;">
+    <h3>Sentiment Analysis</h3>
+    <p id="summary-text">Analyzing reviews...</p>
+
+    <div id="sentiment-chart" style="width: 100%; height: 150px;"></div>
+
+    <div id="top-keywords" style="margin-top: 1em;">
+      <h4>Top Keywords (7)</h4>
+      <ul id="keywords-list">
+      </ul>
+    </div>
+  </div>
+  <div id="footer">
+    <small>Powered by Open Library, WorldCat & NLP</small>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

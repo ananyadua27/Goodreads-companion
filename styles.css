@@ -1,0 +1,89 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 10px;
+  width: 320px;
+  width: 350px;      
+  height: 900px;     
+  background: #f4f4f8;
+  color: #222;
+}
+h2 {
+  margin-top: 0;
+  font-weight: 700;
+  color: #5e17eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#book-info {
+  margin-bottom: 20px;
+  background: white;
+  padding: 12px 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+}
+#book-title {
+  font-size: 14px;
+  color: #666;
+}
+#book-author {
+  font-size: 14px;
+  color: #666;
+}
+#location-input {
+  margin-bottom: 10px;
+}
+label {
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+  color: #444;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  outline-offset: 2px;
+  outline-color: #5e17eb;
+}
+button {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background-color: #5e17eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#availability-status {
+  min-height: 60px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #444;
+  white-space: pre-line;
+}
+#footer {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #999;
+  text-align: center;
+}
+#worldcat-section {
+  margin-top: 1em;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}

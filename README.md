@@ -42,7 +42,7 @@ This project showcases:
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture 
 
 | Component      | Purpose |
 |----------------|---------|

@@ -1,65 +1,68 @@
 # Goodreads Companion (Chrome Extension)  
-### Intelligent Browser Extension for Book Metadata Extraction, Review NLP, and Library Availability
+### Browser Extension for Book Metadata Extraction, Review NLP, and Library Availability
 
-The **Goodreads Companion** is a full-featured browser extension that augments the Goodreads user experience by integrating natural language processing (NLP), structured data extraction, API integration, and client-side state management. This extension demonstrates DOM parsing, sentiment analysis, Chrome extension architecture, asynchronous programming, and data visualization.
-
----
-
-## Overview
-
-Upon navigating to a Goodreads book page, the extension automatically:
-
-- Extracts book metadata (title, author, ISBN) from embedded `JSON-LD` structured data.
-- Scrapes and processes user reviews from the DOM for natural language sentiment analysis.
-- Uses the stored ZIP code (persisted with `chrome.storage.sync`) to:
-  - Check Open Library for book availability using ISBN or title/author fallback.
-  - Generate a WorldCat search query for location-based availability across libraries.
-- Classifies each review into positive, neutral, or negative using a lexicon-based NLP scoring algorithm.
-- Visualizes sentiment distribution in a client-rendered Plotly.js bar chart.
-- Extracts the most frequently mentioned keywords and review themes using token frequency filtering and stopword removal.
+> A fully client-side Chrome Extension that enhances Goodreads with intelligent features such as real-time metadata parsing, review sentiment classification, and library availability lookup, with zero backend dependencies.
 
 ---
 
-## Technical Highlights
+## Motivation
 
-- **Frontend Architecture**: Modular content and popup scripts with clear separation of concerns and message passing.
-- **NLP Integration**: Client-side sentiment classification and keyword extraction without external dependencies.
-- **API Consumption**: Structured use of Open Library REST APIs and WorldCat deep links with fallback mechanisms.
-- **State Management**: Persistent storage and retrieval of user input via `chrome.storage.sync`.
-- **DOM Manipulation**: Content script logic for parsing `ld+json` metadata and extracting review content.
-- **Data Visualization**: Custom chart generation with Plotly.js to summarize classified sentiment distribution.
-- **Chrome Extension Development**: Manifest V3 compliance with modular, scalable file structure and background interaction.
+Goodreads provides a host of user-generated reviews and metadata, but lacks semantic tooling or personalized insights. This extension bridges that gap by introducing intelligent augmentation directly in the browser, with a focus on natural language understanding and user-centric features like ZIP-based library lookup.
 
----
+This project showcases:
 
-## Technologies Used
-
-- **JavaScript (ES6+)**
-- **Chrome Extensions API (Manifest V3)**
-- **JSON-LD Parsing & DOM Scripting**
-- **Plotly.js** for in-browser data visualization
-- **Open Library API** for book availability
-- **WorldCat Integration** for location-based library search
-- **Lexicon-based NLP** (rule-based sentiment scoring)
-- **Local storage** via `chrome.storage.sync`
+- Client-side NLP and rule-based AI  
+- Chrome Extension architecture (Manifest V3)  
+- Structured data extraction from live web content  
+- UX-driven product design with privacy by default  
+- Data visualization and stateful UI rendering  
 
 ---
 
-## Architecture
+## Features
 
-**content.js (runs on Goodreads pages):**
-- Extracts metadata (`title`, `author`, `ISBN`) from structured `ld+json` scripts
-- Scrapes review content from DOM
-- Sends extracted data to `popup.js` via `chrome.runtime` messaging
+- **Real-Time Metadata Extraction**  
+  Parses embedded `ld+json` (JSON-LD) for structured book metadata: `title`, `author`, and `ISBN`.
 
-**popup.js (runs in extension UI):**
-- Retrieves saved ZIP code from `chrome.storage.sync`
-- Uses ISBN/title/author to:
-  - Query Open Library API
-  - Generate WorldCat URL for location-based search
-- Applies rule-based sentiment scoring to user reviews
-- Performs keyword extraction using stopword filtering and frequency analysis
-- Renders sentiment summary bar chart and keyword list using Plotly.js
+- **Review Sentiment Analysis (Local NLP)**  
+  Uses a lexicon-based classifier to analyze Goodreads user reviews into *positive*, *neutral*, or *negative* sentiment.
+
+- **Sentiment Visualization with Plotly.js**  
+  Displays classified review distribution using an interactive bar chart.
+
+- **Keyword Theme Extraction**  
+  Extracts dominant review topics using frequency analysis with stopword filtering (excludes trivial/book-specific terms).
+
+- **Library Availability Lookup**  
+  - Uses Open Library API for real-time book lookup via ISBN or fallback to title/author.  
+  - Generates dynamic WorldCat search links using the user’s ZIP code (stored in Chrome secure storage).
+
+- **Persistent ZIP Code Storage**  
+  User's ZIP is saved using `chrome.storage.sync` and auto-filled on return visits.
+
+---
+
+## 🏗️ Architecture Overview
+
+| Component      | Purpose |
+|----------------|---------|
+| `content.js`   | Injected into Goodreads pages. Extracts structured metadata and DOM-based review content. Sends payload to popup UI. |
+| `popup.js`     | Handles ZIP code retrieval, API lookups, review classification, keyword extraction, and chart rendering. |
+| `manifest.json`| Follows Manifest V3 structure for background permissioning, content script injection, and UI handling. |
+
+---
+
+## Tech Stack
+
+| Layer | Tools / APIs |
+|-------|--------------|
+| Language | JavaScript (ES6+) |
+| Runtime | Chrome Extension (Manifest V3) |
+| Parsing | JSON-LD, DOM |
+| NLP | Lexicon-based rule engine |
+| Visualization | Plotly.js |
+| Storage | `chrome.storage.sync` |
+| External APIs | Open Library REST API, WorldCat URL query |
 
 ---
 
@@ -67,8 +70,8 @@ Upon navigating to a Goodreads book page, the extension automatically:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/goodreads-companion.git
-   cd goodreads-companion
+   git clone https://github.com/ananyadua27/Goodreads-companion.git
+   cd Goodreads-companion
 
 2. Load the Extension in Chrome
    - Navigate to chrome://extensions
@@ -134,7 +137,7 @@ Upon navigating to a Goodreads book page, the extension automatically:
 
 ## Potential Upgrades
 
-- Upgrade sentiment model to a transformer-based classifier (e.g., DistilBERT via Hugging Face).
+- Upgrade sentiment model to a transformer-based classifier.
 - Enable caching of book lookups and review summaries.
 - Implement bookmarks or reading list functionality with export options.
 
